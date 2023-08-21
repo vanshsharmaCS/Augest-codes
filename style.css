@@ -1,69 +1,90 @@
 *{
     margin: 0;
-    padding: 0;
+    padding:0;
     box-sizing: border-box;
 }
 #wrapper{
-    height: 100vh;
-    overflow-x: hidden;
-    overflow-y: auto;
-
+    height:100vh;
+    /* right ka scroll rokne k liye */
+    overflow-x:hidden;
+    overflow-y:auto;
+    /* 3d system use krne k liye perspective ka use krenge */
+    perspective: 10px;
 }
+
 .container{
-    height: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-
-}
-.container h1{
-    margin: 20px 0;
-    text-align: center;
-    margin-bottom: 20px;
-    font-size: 3rem;
-}
-.gallery{
+    position: relative;
     display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    transform-style:preserve-3d;
+    z-index: -1;
 }
-.card{
-    width: 32%;
-  position: relative;
-  margin-bottom: 20px;
-  border-radius: 10px;
-  overflow: hidden;  
+.background{
+    transform: translateZ(-40px) scale(5);
 }
-.card img{
-    height:100%;
-    width: 100%;
-    filter: grayscale(100%);
-    box-shadow: 0 0 20px #333;
+.foreground{
+    transform: translateZ(-20px) scale(3);
 }
-.card:hover{
-    transform: scale(1.03);
-    filter: drop-shadow(0 0 10px #333);
-    transition: 0.5s;
-}
-.card:hover img{
-    filter: grayscale(0%);
-}
-.card figcaption{
+.background,.foreground{
     position: absolute;
-    left:0;
-    bottom:0;
-    padding:25px;
-    height: 20%;
+    height: 100%;
     width: 100%;
-    font-size: 16px;
-    font-weight: 500;
-    color: #fff;
-    opacity: 0;
-    border-radius: 0 0 10px 10px;
-    background: linear-gradient(0deg,rgba(0,0,0,0.5) 0%) rgba(255,255,255,1);
-  transition:0.3s;
+    z-index:-1;
+    object-fit: cover;
 }
-.card:hover figcaption{
-    opacity: 1;
-    scale:1.03;
+h1{
+    position: absolute;
+    top:5rem;
+    letter-spacing: 4px;
+    font-size: 10rem;
+    color: white;
+    text-shadow: 0 0 10px rgba(0,0,0,3);
+}
+section{
+    background-color: rgba(45,45,45);
+    color: white;
+    padding: 5rem 0;
+}
+
+/* Image add krne ki new trick */
+.bg1{
+    background-image: url(sport-1.jpg);
+}
+.bg2{
+    background-image: url(sport-2.jpg);
+}
+.bg3{
+    background-image: url(sport-3.jpg);
+}
+.secHeading{
+    font-size: 5rem;
+    padding: 0 10rem;
+}
+
+.text{
+    font-size: 1.5rem;
+    padding: 0 10rem;
+    margin: 5rem 0;
+}
+.bg{
+    position: relative;
+    width: 100%;
+    /* Image ko fixed krne k liye ye atribute use kr rhe h */
+    background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    height:500px;
+}
+.desc{
+    position: absolute;
+    background-color: white;
+    padding: 0.5rem 2.5rem;
+    top: 30%;
+    left: 40%;
+    transform: translateX(-50%) translateY(-50%);
+    color: black;
+    font-size: 3.5rem;
+    font-weight: 600;
 }
